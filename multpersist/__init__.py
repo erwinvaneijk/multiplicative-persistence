@@ -59,6 +59,7 @@ def order_from_generator(generator):
     for num in generator():
         yield (compute_mp_order(num), num)
 
+
 def find_max_order(generator):
     max_order = 0
     max_number = 0
