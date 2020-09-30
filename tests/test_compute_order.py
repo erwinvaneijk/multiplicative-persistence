@@ -5,7 +5,7 @@
 import itertools
 import pytest
 from multpersist import OrderNotFound, compute_mp_order, \
-     efficient_candidate_generator, find_max_order, \
+     efficient_candidate_generator, find_max_order, find_next, \
      find_with_order, infinite_candidate_generator, is_in_order
 
 
@@ -48,6 +48,7 @@ def test_efficient_candidate_generator():
 def test_compute_order():
     assert compute_mp_order(10) == 1
     assert compute_mp_order(18) == 1
+    assert compute_mp_order(25) == 2
     assert compute_mp_order(237) == 2
     assert compute_mp_order(2777778888899) == 3
     assert compute_mp_order(277777788888899) == 11
@@ -73,7 +74,11 @@ def test_largest_order_between_1e6_3e6():
 def test_infinite_generator():
     generator = infinite_candidate_generator(10)
     items = list(itertools.islice(generator, 10))
-    assert items == [11, 12, 13, 14, 16, 17, 18, 19, 22, 23]
+    assert items == [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+    generator = infinite_candidate_generator(1000)
+    items = list(itertools.islice(generator, 10))
+    assert items == [1111, 1112, 1113, 1114, 1116, 1117, 1118, 1119, 1122, 1123]
 
 
 def test_find_with_order_not_found():
@@ -90,3 +95,10 @@ def test_find_smallest_with_order():
     assert find_with_order(generator, 7) == (7, 68889)
     assert find_with_order(generator, 8) == (8, 2677889)
     assert find_with_order(generator, 9) == (9, 26888999)
+
+
+def test_find_next():
+    def generator():
+        return infinite_candidate_generator(10)
+    results = list(itertools.islice(find_next(generator, 1), 4))
+    assert results == [(1, 10), (2, 25), (3, 39), (4, 77)]

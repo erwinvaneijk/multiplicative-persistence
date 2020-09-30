@@ -3,3 +3,6 @@ __pycache__/
 .vscode/
 multpersist/__pycache__/__init__.cpython-37.pyc
 multpersist/__pycache__/__init__.cpython-37.pyc
+.pytest_cache/v/cache/nodeids
+.pytest_cache/v/cache/stepwise
+.pytest_cache/

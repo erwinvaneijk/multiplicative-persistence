@@ -23,11 +23,7 @@ def is_in_order(num_as_str):
 def efficient_candidate_generator(start, stop):
     for x in list(range(start, stop)):
         s = str(x)
-        if ('5' in s) or ('0' in s):
-            next
-        elif not is_in_order(s):
-            next
-        else:
+        if not (('5' in s) or ('0' in s)) and is_in_order(s):
             yield x
 
 
@@ -37,7 +33,7 @@ def infinite_candidate_generator(start):
     now = start
     while (True):
         s = str(now)
-        if not (('5' in s) or ('0' in s)) and is_in_order(s):
+        if now < 100 or (not (('5' in s) or ('0' in s)) and is_in_order(s)):
             yield now
         now += 1
 
@@ -68,6 +64,18 @@ def find_max_order(generator):
             max_order = order
             max_number = num
     return (max_order, max_number)
+
+
+def find_next(generator, order_to_find):
+    """Find the next number that has an order equal to order_to_find.
+
+    genarator: the generator to use
+    order_to_find: the order we'd like to find.
+    """
+    for order, num in order_from_generator(generator):
+        if (order == order_to_find):
+            yield (order, num)
+            order_to_find = order + 1
 
 
 def find_with_order(generator, order):
