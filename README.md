@@ -1,5 +1,11 @@
 # Multiplicative Persistence
 
+## Status
+
+[![Build Status](https://travis-ci.org/erwinvaneijk/multiplicative-persistence.svg?branch=master)](https://travis-ci.org/erwinvaneijk/multiplicative-persistence)
+
+## Description
+
 Multiplicative Persistence Order is the number you get when you start
 multiplying all the (base 10) digits in a number, and multiply the digits
 of the results again, until you get a one digit number.
