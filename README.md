@@ -2,7 +2,7 @@
 
 ## Status
 
-[![Build Status](https://github.com/erwinvaneijk/multiplicative-persistence/workflows/python-multiplicatve-persistence/badge.svg)]
+[![Build Status](https://github.com/erwinvaneijk/multiplicative-persistence/workflows/python-multiplicative-persistence/badge.svg)]
 
 ## Description
 
